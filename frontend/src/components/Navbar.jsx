@@ -1,5 +1,7 @@
 import { CheckCircle } from "lucide-react";
-export default function Navbar() {
+import freelance from '../assets/logo.png'
+
+export default function Navbar({ onNavigate }) {
     return (
         <>
             
@@ -12,27 +14,32 @@ export default function Navbar() {
                                     <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
                                         <CheckCircle className="h-5 w-5 text-white" />
                                     </div>
-                                    <span className="ml-2 font-bold text-2xl text-black">FreelanceHub</span>
+                                    <span className="ml-2 font-bold text-2xl text-black">
+                                        FreelanceHub
+                                        {/* <img src={freelance} alt="logo" /> */}
+                                        </span>
                                 </div>
                             </div>
 
                             {/* Desktop Navigation */}
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-4">
-                                    <a href="#features" className="text-xl text-gray-600 hover:text-gray-900 px-3 py-2 text-sm">Features</a>
-                                    <a href="#pricing" className="text-xl text-gray-600 hover:text-gray-900 px-3 py-2 text-sm">Products</a>
-                                    <a href="#contact" className="text-xl text-gray-600 hover:text-gray-900 px-3 py-2 text-sm">Contact</a>
+                                    <a href="#features" className="text-xl text-gray-600 hover:text-gray-900 px-3 py-2">Features</a>
+                                    <a href="#pricing" className="text-xl text-gray-600 hover:text-gray-900 px-3 py-2">Products</a>
+                                    <a href="#contact" className="text-xl text-gray-600 hover:text-gray-900 px-3 py-2">Contact</a>
                                 </div>
                             </div>
 
                             <div className="hidden md:block">
                                 <div className="ml-4 flex items-center md:ml-6 space-x-3">
+                                    <a href="/login">
                                     <button className="px-4 py-2 rounded-2xl bg-black text-white shadow-md hover:bg-blue-600 transition" onClick={() => onNavigate('auth')}>
                                         Login
-                                    </button>
+                                    </button></a>
+                                    <a href="/login">
                                     <button className="px-4 py-2 rounded-2xl bg-black text-white shadow-md hover:bg-blue-600 transition" onClick={() => onNavigate('auth')}>
                                         Get Started
-                                    </button>
+                                    </button></a>
                                 </div>
                             </div>
                         </div>

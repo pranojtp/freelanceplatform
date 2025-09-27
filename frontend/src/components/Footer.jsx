@@ -22,7 +22,7 @@ const Footer = () => {
                             <h3 className="text-lg mb-4">Product</h3>
                             <ul className="space-y-2 text-gray-400">
                                 <li><a href="#" className="hover:text-white">Features</a></li>
-                                <li><a href="#" className="hover:text-white">Pricing</a></li>
+                                <li><a href="#" className="hover:text-white">Products</a></li>
                                 <li><a href="#" className="hover:text-white">Integrations</a></li>
                                 <li><a href="#" className="hover:text-white">API</a></li>
                             </ul>

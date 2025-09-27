@@ -60,7 +60,7 @@ const Workflow = () => {
                                     key={step.step}
                                     className="relative group"
                                     style={{
-                                        animationDelay: `${index * 200}ms`,
+                                        animationDelay: `${index * 50}ms`,
                                         animation: 'fadeInUp 0.8s ease-out forwards'
                                     }}
                                 >

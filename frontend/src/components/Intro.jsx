@@ -1,4 +1,6 @@
 import React from 'react'
+// import Authpage from './Authpage'
+
 
 export default function Intro() {
   const onNavigate = (path) => {
@@ -48,7 +50,7 @@ export default function Intro() {
                   <button 
                     className="px-8 py-4 rounded-xl bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg hover:shadow-xl hover:bg-white/90 transition-all duration-300 text-lg font-semibold border border-gray-200 transform hover:scale-105"
                   >
-                    Watch Demo
+                    Learn more
                   </button>
                 </div>
               </div>
@@ -60,6 +62,7 @@ export default function Intro() {
                       alt="Freelancer workspace"
                       className="w-full h-auto rounded-xl shadow-lg"
                     />
+                    {/* <Authpage /> */}
                   </div>
                   {/* Floating elements */}
                   {/* <div className="absolute -top-4 -right-4 w-8 h-8 bg-blue-500 rounded-full blur-sm opacity-60 animate-bounce"></div>
