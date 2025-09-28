@@ -30,8 +30,18 @@ function LoginForm() {
       .then((res) => {
         alert(res.data.message)
         if (res.data.usertoken) {
-          localStorage.setItem("token", res.data.usertoken)
-          navigate('/userdashboard')
+          // Save token and role
+          localStorage.setItem("token", res.data.usertoken);
+          localStorage.setItem("role", res.data.role);
+
+          // Redirect based on role
+          if (res.data.role === "client") {
+            navigate('/clientdashboard');
+          } else if (res.data.role === "freelancer") {
+            navigate('/freelancerdashboard');
+          } else {
+            navigate('/userdashboard'); // fallback
+          }
         }
       })
       .catch((err) => {
@@ -43,14 +53,14 @@ function LoginForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <SocialAuthButton text="Continue with Google" onClick={() => console.log('Google login')} />
+      {/* <SocialAuthButton text="Continue with Google" onClick={() => console.log('Google login')} />
       <SocialAuthButton text="Continue with GitHub" onClick={() => console.log('GitHub login')} />
 
       <div className="flex items-center my-6">
         <hr className="flex-grow border-gray-300" />
         <span className="px-4 text-gray-500 text-sm font-medium">OR</span>
         <hr className="flex-grow border-gray-300" />
-      </div>
+      </div> */}
 
       <div className="mb-4">
         <label htmlFor="email" className="sr-only">Email</label>

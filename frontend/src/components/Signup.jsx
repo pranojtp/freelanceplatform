@@ -150,14 +150,14 @@ function SignUpForm() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       {/* Social login */}
-      <SocialAuthButton text="Continue with Google" onClick={() => console.log('Google signup')} />
+      {/* <SocialAuthButton text="Continue with Google" onClick={() => console.log('Google signup')} />
       <SocialAuthButton text="Continue with GitHub" onClick={() => console.log('GitHub signup')} />
 
       <div className="flex items-center my-6">
         <hr className="flex-grow border-gray-300" />
         <span className="px-4 text-gray-500 text-sm font-medium">OR</span>
         <hr className="flex-grow border-gray-300" />
-      </div>
+      </div> */}
 
       {/* Full Name */}
       <input
