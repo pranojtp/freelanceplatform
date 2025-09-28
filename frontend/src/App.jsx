@@ -8,6 +8,7 @@ import Freelancer_dashboard from './components/Freelancer_dashboard'
 import Freelancer_projects from './components/Freelancer_projects'
 import Client_projects from './components/Client_projects'
 import Addproject from './components/Addproject'
+import Createproposal from './components/Createproposal'
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
                     <Route path="/clientWork" element={<Freelancer_projects />} />
                     <Route path="/clientprojects" element={<Client_projects />} />
                     <Route path="/addproject" element={<Addproject />} />
+                    <Route path="/createproposal" element={<Createproposal />} />
+                    
                 </Routes>
             </BrowserRouter>
         </>

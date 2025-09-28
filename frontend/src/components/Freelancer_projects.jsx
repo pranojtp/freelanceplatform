@@ -21,47 +21,40 @@ const Freelancer_projects = () => {
                 console.log(err)
             })
     }, [])
-    const deleteProject = (id) => {
-        axios.delete("http://localhost:3800/projects/delete/" + id)
-            .then((res) => {
-                alert("Deleted successfully")
-                window.location.reload()
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-  return (
-    <>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                        {projects.map((project, index) => (
-                            
-                            <Card key={index} className="text-center border-0 shadow-md hover:shadow-lg transition-shadow">
-                                <CardBody>
-                                    {/* <div className="mx-auto mb-4">
+    return (
+        <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {projects.map((project, index) => (
+
+                    <Card key={index} className="text-center border-0 shadow-md hover:shadow-lg transition-shadow">
+                        <CardBody>
+                            {/* <div className="mx-auto mb-4">
                                         {feature.icon}
                                     </div> */}
-                                    <Typography className="text-2xl text-black-600 hover:text-indigo-600">
-                                        {project.projectName}
-                                    </Typography>
-                                    <Typography className="text-base pt-4 text-gray-600 hover:text-gray-900">
-                                        {project.projectDescription}
-                                    </Typography>
-                                    <Typography className="text-base pt-4 text-gray-600 hover:text-gray-900">
-                                        {project.estimatedAmount}
-                                    </Typography>
-                                    <Typography className="text-base pt-4 text-gray-600 hover:text-gray-900">
-                                        {project.dueDate}
-                                    </Typography>
-                                </CardBody>
-                                <CardFooter className="text-l text-gray-600 hover:text-gray-900">
-                                    <Button onClick={deleteProject}>Send Proposal</Button>
-                                </CardFooter>
-                            </Card>
-                        ))}
-                    </div>
-    </>
-  )
+                            <Typography className="text-xl text-black-600 hover:text-indigo-600">
+                                Project Name:
+                                {project.projectName}
+                            </Typography>
+                            <Typography className="text-m pt-4 text-gray-600 hover:text-gray-900">
+                                {project.projectDescription}
+                            </Typography>
+                            <Typography className="text-base pt-4 text-gray-600 hover:text-gray-900">
+                                Estimated Amount: 
+                                {project.estimatedAmount}
+                            </Typography>
+                            <Typography className="text-base pt-4 text-gray-600 hover:text-gray-900">
+                                Due Date: 
+                                {project.dueDate}
+                            </Typography>
+                        </CardBody>
+                        <CardFooter className="text-l text-white">
+                            <a href="/createproposal"><Button className='bg-blue-500'>Send Proposal</Button></a>
+                        </CardFooter>
+                    </Card>
+                ))}
+            </div>
+        </>
+    )
 }
 
 export default Freelancer_projects

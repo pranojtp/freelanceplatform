@@ -6,12 +6,11 @@ import {
 } from "@material-tailwind/react";
 import axios from 'axios';
 
-
-const Addproject = () => {
+const Createproposal = () => {
     const [form, setForm] = useState({
         projectName: "",
         projectDescription: "",
-        estimatedAmount: "",
+        proposalAmount: "",
         dueDate: ""
     })
     const handleChange = (e) => {
@@ -20,16 +19,16 @@ const Addproject = () => {
     let navigate = useNavigate()
     let location = useLocation()
     const handleSubmit = () => {
-        axios.post('http://localhost:3800/projects/add', form)
+        axios.post('http://localhost:3800/proposals/create', form)
             .then((res) => {
                 setForm({
                     projectName: "",
                     projectDescription: "",
-                    estimatedAmount: "",
+                    proposalAmount: "",
                     dueDate: ""
                 })
                 navigate('/clientWork')
-                
+
             })
             .catch((err) => {
                 console.error(err)
@@ -39,16 +38,16 @@ const Addproject = () => {
         if (location.state != null) {
             setForm({
                 ...form,
-                projectName: location.state.project.projectName,
-                projectDescription: location.state.project.projectDescription,
-                estimatedAmount: location.state.project.estimatedAmount,
-                dueDate: location.state.project.dueDate
+                projectName: location.state.proposal.projectName,
+                projectDescription: location.state.proposal.projectDescription,
+                proposalAmount: location.state.proposal.proposalAmount,
+                dueDate: location.state.proposal.dueDate
             })
         }
     }, [location.state])
     return (
         <>
-            <h2>Add Project</h2>
+            <h1>Create Proposal</h1>
             <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
                     type="text"
@@ -60,7 +59,7 @@ const Addproject = () => {
                     required
                 />
 
-                
+
                 <input
                     type="text"
                     placeholder="Project Description"
@@ -71,13 +70,13 @@ const Addproject = () => {
                     required
                 />
 
-                
+
                 <input
                     type="text"
-                    placeholder="Estimated Amount"
+                    placeholder="Proposal Amount"
                     className="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
-                    name='estimatedAmount'
-                    value={form.estimatedAmount}
+                    name='proposalAmount'
+                    value={form.proposalAmount}
                     onChange={handleChange}
                     required
                 />
@@ -91,16 +90,16 @@ const Addproject = () => {
                     onChange={handleChange}
                     required
                 />
-                
+
                 <Button
                     type="submit"
                     className="w-full bg-blue-600 text-white py-3 rounded-md text-lg font-semibold hover:bg-blue-700 transition"
                 >
-                    Add Project
+                    Create Proposal
                 </Button>
             </form>
         </>
     )
 }
 
-export default Addproject
+export default Createproposal
