@@ -19,14 +19,18 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Landing_page />} />
                     <Route path="/login" element={<Authpage />} />
+
                     <Route path="/userdashboard" element={<User_dashboard />}></Route>
-                    <Route path="/clientdashboard" element={<Client_dashboard />}></Route>
-                    <Route path="/freelancerdashboard" element={<Freelancer_dashboard/>}></Route>
-                    <Route path="/clientWork" element={<Freelancer_projects />} />
-                    <Route path="/clientprojects" element={<Client_projects />} />
-                    <Route path="/addproject" element={<Addproject />} />
-                    <Route path="/createproposal" element={<Createproposal />} />
-                    
+                    <Route path="/clientdashboard" element={<Client_dashboard />}>
+                        <Route path="clientprojects" element={<Client_projects />} />
+                        <Route path="addproject" element={<Addproject />} />
+                    </Route>
+
+                    <Route path="/freelancerdashboard" element={<Freelancer_dashboard />}>
+                        <Route path="clientWork" element={<Freelancer_projects />} />
+                        <Route path="createproposal" element={<Createproposal />} />
+                    </Route>
+
                 </Routes>
             </BrowserRouter>
         </>

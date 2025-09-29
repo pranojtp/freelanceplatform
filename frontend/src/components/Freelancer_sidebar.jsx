@@ -1,16 +1,24 @@
 import React from 'react'
+import { Button } from '@material-tailwind/react';
+import { useNavigate } from 'react-router-dom';
 
 const Freelancer_sidebar = () => {
     const navigation = [
-        { name: 'Works', href: '/clientWork' },
-        { name: 'Project Management', href: '/fleelancerproject' },
-        { name: 'Proposals', href: '/freelancerproposal' },
-        { name: 'Invoices', href: '/freelancerinvoice' },
-        
+        { name: 'New Projects', href: '/freelancerdashboard/clientWork' },
+        { name: 'Project Management', href: '/freelancerdashboard/fleelancerproject' },
+        { name: 'Proposals', href: '/freelancerdashboard/freelancerproposal' },
+        { name: 'Invoices', href: '/freelancerdashboard/freelancerinvoice' },
+
     ];
+    const navigate = useNavigate()
+    function handleLogout() {
+        localStorage.removeItem('token')
+        localStorage.removeItem('role')
+        navigate('/')
+    }
     return (
         <>
-            <div className="h-screen w-90 flex flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-blue-500 px-6 p-4">
+            <div className="h-screen w-90 flex flex-col gap-y-5 overflow-y-auto border-r border-gray-200 bg-gray-800 px-6 p-4">
                 <div className="relative flex flex-col h-16 shrink-0 mb-4">
                     <h1 className="text-3xl font-bold mb-4 text-white">Welcome Freelancer</h1>
                     <p className="text-l text-white">Explore Freelancehub</p>
@@ -24,12 +32,13 @@ const Freelancer_sidebar = () => {
                             <a
                                 key={item.name}
                                 href={item.href}
-                                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-500 hover:bg-black text-white font-medium text-xl"
+                                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-800 hover:bg-neutral-500 text-white font-medium text-xl"
                             >
                                 {item.name}
                             </a>
                         );
                     })}
+                    <Button onClick={handleLogout}>Logout</Button>
                 </nav>
             </div>
         </>

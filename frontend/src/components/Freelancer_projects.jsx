@@ -31,7 +31,7 @@ const Freelancer_projects = () => {
                             {/* <div className="mx-auto mb-4">
                                         {feature.icon}
                                     </div> */}
-                            <Typography className="text-xl text-black-600 hover:text-indigo-600">
+                            <Typography className="text-xl text-gray-700 hover:text-gray-900">
                                 Project Name:
                                 {project.projectName}
                             </Typography>
@@ -44,11 +44,12 @@ const Freelancer_projects = () => {
                             </Typography>
                             <Typography className="text-base pt-4 text-gray-600 hover:text-gray-900">
                                 Due Date: 
-                                {project.dueDate}
+                                {/* {project.dueDate} */}
+                                {new Date(project.dueDate).toLocaleDateString()}
                             </Typography>
                         </CardBody>
                         <CardFooter className="text-l text-white">
-                            <a href="/createproposal"><Button className='bg-blue-500'>Send Proposal</Button></a>
+                            <a href="/createproposal"><Button className='bg-gray-700 hover:bg-gray-800'>Send Proposal</Button></a>
                         </CardFooter>
                     </Card>
                 ))}

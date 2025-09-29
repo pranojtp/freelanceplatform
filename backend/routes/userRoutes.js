@@ -25,12 +25,9 @@ router.post("/userlogin", async (req, res) => {
     }
     try {
         if (user.password === req.body.password) {
-            const payload = { uemail:req.body.email, pwd:req.body.password, role: user.role }
+            const payload = { uemail:req.body.email, pwd:req.body.password, role: user.role,id:user._id }
             const token = jwt.sign(payload, "freelancekey")
-
-            console.log("user id is",user._id.toString())
-
-            res.status(200).send({ message: "Login successful", usertoken: token , role: user.role,user_id:user._id })
+            res.status(200).send({ message: "Login successful", usertoken: token , role: user.role })
         }
         else{
             res.status(401).send({message:"UNAUTHOIZED ACESSS"})
