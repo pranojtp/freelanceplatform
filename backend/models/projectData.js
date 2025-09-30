@@ -7,10 +7,15 @@ const projectSchema = new mongoose.Schema({
   dueDate: { type: Date, required: true },
   client: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',   // must match your User model name
+    ref: 'users',   // must match your User model name
     required: true
+  },
+  status: {
+    type: String,
+    enum: ['open', 'in-progress', 'completed'],
+    default: 'open'
   }
-},); 
+},);
 
-const Project = mongoose.model('Project', projectSchema);
+const Project = mongoose.model('projects', projectSchema);
 module.exports = Project;

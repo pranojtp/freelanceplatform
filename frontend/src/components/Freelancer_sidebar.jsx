@@ -5,8 +5,9 @@ import { useNavigate } from 'react-router-dom';
 const Freelancer_sidebar = () => {
     const navigation = [
         { name: 'New Projects', href: '/freelancerdashboard/clientWork' },
-        { name: 'Project Management', href: '/freelancerdashboard/fleelancerproject' },
         { name: 'Proposals', href: '/freelancerdashboard/freelancerproposal' },
+        { name: 'Project Management', href: '/freelancerdashboard/fleelancerproject' },
+        { name: 'My Projects', href: '/freelancerdashboard/myprojects' },
         { name: 'Invoices', href: '/freelancerdashboard/freelancerinvoice' },
 
     ];

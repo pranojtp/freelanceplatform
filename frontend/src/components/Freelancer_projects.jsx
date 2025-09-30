@@ -49,7 +49,7 @@ const Freelancer_projects = () => {
                             </Typography>
                         </CardBody>
                         <CardFooter className="text-l text-white">
-                            <a href="/createproposal"><Button className='bg-gray-700 hover:bg-gray-800'>Send Proposal</Button></a>
+                            <a href="/freelancerdashboard/sendProposal"><Button className='bg-gray-700 hover:bg-gray-800'>Send Proposal</Button></a>
                         </CardFooter>
                     </Card>
                 ))}

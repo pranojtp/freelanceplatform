@@ -9,6 +9,9 @@ import Freelancer_projects from './components/Freelancer_projects'
 import Client_projects from './components/Client_projects'
 import Addproject from './components/Addproject'
 import Createproposal from './components/Createproposal'
+import Freelancer_proposals from './components/Freelancer_proposals'
+import Client_proposals from './components/Client_proposals'
+import Project_management from './components/Project_management'
 
 
 function App() {
@@ -24,11 +27,15 @@ function App() {
                     <Route path="/clientdashboard" element={<Client_dashboard />}>
                         <Route path="clientprojects" element={<Client_projects />} />
                         <Route path="addproject" element={<Addproject />} />
+                        <Route path="clientproposals" element={<Client_proposals />} />
                     </Route>
 
                     <Route path="/freelancerdashboard" element={<Freelancer_dashboard />}>
                         <Route path="clientWork" element={<Freelancer_projects />} />
-                        <Route path="createproposal" element={<Createproposal />} />
+                        <Route path="sendProposal" element={<Createproposal />} />
+                        <Route path="freelancerproposal" element={<Freelancer_proposals/>} />
+                        <Route path="fleelancerproject" element={<Project_management/>} />
+
                     </Route>
 
                 </Routes>
