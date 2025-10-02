@@ -7,6 +7,8 @@ const userRoute=require('./routes/userRoutes')
 const projectRoute=require('./routes/projectRoutes')
 const proposalRoute=require('./routes/proposalRoutes')
 const taskRoutes=require('./routes/taskRoutes')
+const invoiceRoutes=require('./routes/invoiceRoutes')
+const paymentRoute=require('./routes/paymentRoute')
 require('dotenv').config()
 port=process.env.PORT || 3800
 connectDB()
@@ -17,6 +19,8 @@ app.use('/authuser',userRoute)
 app.use('/projects',projectRoute)
 app.use('/proposals',proposalRoute)
 app.use('/api/tasks', taskRoutes);
+app.use('/invoices',invoiceRoutes)
+app.use('/payment',paymentRoute)
 
 
 

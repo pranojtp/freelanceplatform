@@ -128,11 +128,11 @@ router.put('/update-status/:id', verifyToken, async (req, res) => {
             return res.status(400).json({ message: 'Invalid status value' });
         }
         
-        if (status === 'accepted') {
-            const project = await Project.findById(proposal.project);
-            project.status = 'in-progress'; // mark project as active for freelancer
-            await project.save();
-        }
+        // if (status === 'accepted') {
+        //     const project = await Project.findById(proposal.project);
+        //     project.status = 'in-progress'; // mark project as active for freelancer
+        //     await project.save();
+        // }
 
 
         const proposal = await Proposal.findById(req.params.id);
@@ -153,39 +153,39 @@ router.put('/update-status/:id', verifyToken, async (req, res) => {
 
 });
 
-router.get('/dashboard-projects', verifyToken, async (req, res) => {
-    try {
-        if (req.role !== 'freelancer') {
-            return res.status(403).json({ message: 'Access denied. Only freelancers can view this dashboard.' });
-        }
+// router.get('/dashboard-projects', verifyToken, async (req, res) => {
+//     try {
+//         if (req.role !== 'freelancer') {
+//             return res.status(403).json({ message: 'Access denied. Only freelancers can view this dashboard.' });
+//         }
 
-        // Find all proposals where the status is 'accepted' and the freelancer matches
-        const activeProposals = await Proposal.find({
-            freelancer: req.userId,
-            status: 'accepted'
-        })
-        .populate('project', 'projectName projectDescription status') // Get essential project info
-        .populate('client', 'username email'); // Get client info
+//         // Find all proposals where the status is 'accepted' and the freelancer matches
+//         const activeProposals = await Proposal.find({
+//             freelancer: req.userId,
+//             status: 'accepted'
+//         })
+//         .populate('project', 'projectName projectDescription status') // Get essential project info
+//         .populate('client', 'username email'); // Get client info
 
-        // Map and filter for cleaner output
-        const activeProjects = activeProposals
-            .filter(proposal => proposal.project && proposal.project.status === 'in-progress')
-            .map(proposal => ({
-                proposalId: proposal._id,
-                projectId: proposal.project._id,
-                projectName: proposal.project.projectName,
-                clientName: proposal.client.username,
-                projectStatus: proposal.project.status,
-                proposedAmount: proposal.proposalAmount,
-                dueDate: proposal.dueDate,
-                // Add any other crucial details
-            }));
+//         // Map and filter for cleaner output
+//         const activeProjects = activeProposals
+//             .filter(proposal => proposal.project && proposal.project.status === 'in-progress')
+//             .map(proposal => ({
+//                 proposalId: proposal._id,
+//                 projectId: proposal.project._id,
+//                 projectName: proposal.project.projectName,
+//                 clientName: proposal.client.username,
+//                 projectStatus: proposal.project.status,
+//                 proposedAmount: proposal.proposalAmount,
+//                 dueDate: proposal.dueDate,
+//                 // Add any other crucial details
+//             }));
 
-        res.status(200).json(activeProjects);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Failed to fetch active projects', error: err.message });
-    }
-});
+//         res.status(200).json(activeProjects);
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ message: 'Failed to fetch active projects', error: err.message });
+//     }
+// });
 
 module.exports = router;
