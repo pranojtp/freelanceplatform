@@ -18,7 +18,7 @@ app.use(cors())
 app.use('/authuser',userRoute)
 app.use('/projects',projectRoute)
 app.use('/proposals',proposalRoute)
-app.use('/api/tasks', taskRoutes);
+app.use('/tasks', taskRoutes);
 app.use('/invoices',invoiceRoutes)
 app.use('/payment',paymentRoute)
 

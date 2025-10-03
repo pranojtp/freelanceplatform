@@ -6,7 +6,7 @@ const Freelancer_sidebar = () => {
     const navigation = [
         { name: 'New Projects', href: '/freelancerdashboard/clientWork' },
         { name: 'Proposals', href: '/freelancerdashboard/freelancerproposal' },
-        { name: 'Project Management', href: '/freelancerdashboard/fleelancerproject' },
+        { name: 'Project Management', href: '/freelancerdashboard/project-management' },
         { name: 'My Projects', href: '/freelancerdashboard/myprojects' },
         { name: 'Invoices', href: '/freelancerdashboard/freelancerinvoice' },
 

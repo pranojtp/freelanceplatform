@@ -16,6 +16,7 @@ import Createinvoice from './components/Createinvoice'
 import Freelancer_invoices from './components/Freelancer_invoices'
 import Clientinvoices from './components/Clientinvoices'
 import PaymentSuccess from './components/paymentSuccess'
+import MyProjects from './components/Myprojects'
 
 
 function App() {
@@ -40,9 +41,10 @@ function App() {
                         <Route path="clientWork" element={<Freelancer_projects />} />
                         <Route path="sendProposal" element={<Createproposal />} />
                         <Route path="freelancerproposal" element={<Freelancer_proposals/>} />
-                        <Route path="fleelancerproject" element={<Project_management/>} />
+                        <Route path="project-management" element={<Project_management />} />
                         <Route path="freelancerinvoice" element={<Freelancer_invoices/>} />
                         <Route path="createinvoice" element={<Createinvoice/>} />
+                        <Route path="myprojects" element={<MyProjects/>} />
 
                     </Route>
 
