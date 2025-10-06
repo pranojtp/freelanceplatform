@@ -114,7 +114,7 @@ const KanbanBoard = ({ project }) => {
           <input placeholder="Title" value={title} onChange={e => setTitle(e.target.value)} className="border p-1 w-full mb-2" />
           <input placeholder="Description" value={desc} onChange={e => setDesc(e.target.value)} className="border p-1 w-full mb-2" />
           <div className="flex gap-2">
-            <button className="bg-blue-600 text-white px-3 py-1 rounded" onClick={addTask} disabled={loading}>Add</button>
+            <button className="bg-blue-600 text-white px-3 py-1 rounded" onClick={addTask} >Add</button>
             <button className="bg-gray-400 text-white px-3 py-1 rounded" onClick={() => setShowAdd(false)}>Cancel</button>
           </div>
         </div>

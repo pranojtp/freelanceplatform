@@ -1,5 +1,5 @@
 import axios from "axios";
-// import { acesFilmicToneMapping } from "three/tsl";
+
 
 const axiosInstance = axios.create({
   baseURL: "http://localhost:3800",

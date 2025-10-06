@@ -15,6 +15,7 @@ const Freelancer_sidebar = () => {
     function handleLogout() {
         localStorage.removeItem('token')
         localStorage.removeItem('role')
+        localStorage.removeItem('_grecaptcha')
         navigate('/')
     }
     return (
