@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from '../axiosinterceptor';
 import { useLocation } from 'react-router-dom';
-import KanbanBoard from '../components/KanbanBoard';
+import KanbanBoard from './KanbanBoard';
 
 const ProjectManagementPage = () => {
   const [projects, setProjects] = useState([]);
@@ -63,3 +63,4 @@ const ProjectManagementPage = () => {
 };
 
 export default ProjectManagementPage;
+

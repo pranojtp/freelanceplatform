@@ -9,9 +9,9 @@ const Footer = () => {
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div className="col-span-1 md:col-span-2">
                             <div className="flex items-center mb-4">
-                                <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                                {/* <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
                                     <CheckCircle className="h-5 w-5 text-white" />
-                                </div>
+                                </div> */}
                                 <span className="ml-2 text-xl">FreelanceHub</span>
                             </div>
                             <p className="text-gray-400 max-w-md">
@@ -23,8 +23,8 @@ const Footer = () => {
                             <ul className="space-y-2 text-gray-400">
                                 <li><a href="#" className="hover:text-white">Features</a></li>
                                 <li><a href="#" className="hover:text-white">Products</a></li>
-                                <li><a href="#" className="hover:text-white">Integrations</a></li>
-                                <li><a href="#" className="hover:text-white">API</a></li>
+                                {/* <li><a href="#" className="hover:text-white">Integrations</a></li>
+                                <li><a href="#" className="hover:text-white">API</a></li> */}
                             </ul>
                         </div>
                         <div>

@@ -118,6 +118,75 @@ router.post('/create', verifyToken, async (req, res) => {
 
 // 🔹 Client accepts or rejects a proposal
 // proposalRoute.js (inside update-status)
+// router.put('/update-status/:id', verifyToken, async (req, res) => {
+//     try {
+//         if (req.role !== 'client') {
+//             return res.status(403).json({ message: 'Only clients can update proposal status' });
+//         }
+
+//         const { status } = req.body;
+//         if (!['accepted', 'rejected'].includes(status)) {
+//             return res.status(400).json({ message: 'Invalid status value' });
+//         }
+
+//         const proposal = await Proposal.findById(req.params.id).populate('project');
+//         if (!proposal) return res.status(404).json({ message: 'Proposal not found' });
+
+//         if (proposal.client.toString() !== req.userId) {
+//             return res.status(403).json({ message: 'You can only update proposals sent to your projects' });
+//         }
+
+//         proposal.status = status;
+//         await proposal.save();
+
+//         // 🔹 If accepted → assign freelancer to the project
+//         if (status === 'accepted') {
+//             const project = await Project.findById(proposal.project._id);
+//             if (project) {
+//                 project.freelancer = proposal.freelancer; // 👈 assign freelancer
+//                 project.status = 'in-progress';
+//                 await project.save();
+//             }
+//         }
+
+//         res.status(200).json({ message: 'Proposal status updated', proposal });
+//     } catch (err) {
+//         console.error(err);
+//         res.status(500).json({ message: 'Failed to update proposal', error: err.message });
+//     }
+// });
+
+// router.put('/update-status/:id', verifyToken, async (req, res) => {
+//     try {
+//         if (req.role !== 'client') {
+//             return res.status(403).json({ message: 'Only clients can update proposal status' });
+//         }
+
+//         const { status } = req.body;
+//         if (!['accepted', 'rejected'].includes(status)) {
+//             return res.status(400).json({ message: 'Invalid status' });
+//         }
+
+//         const proposal = await Proposal.findById(req.params.id);
+//         if (!proposal) return res.status(404).json({ message: 'Proposal not found' });
+
+//         proposal.status = status;
+//         await proposal.save();
+
+//         // ✅ When accepted, set freelancer in project
+//         if (status === 'accepted') {
+//             await Project.findByIdAndUpdate(proposal.projectId, {
+//                 freelancer: proposal.freelancerId
+//             });
+//         }
+
+//         res.status(200).json({ message: 'Proposal status updated' });
+//     } catch (err) {
+//         console.error('Failed to update proposal:', err);
+//         res.status(500).json({ message: 'Error updating proposal', error: err.message });
+//     }
+// });
+
 router.put('/update-status/:id', verifyToken, async (req, res) => {
     try {
         if (req.role !== 'client') {
@@ -129,47 +198,56 @@ router.put('/update-status/:id', verifyToken, async (req, res) => {
             return res.status(400).json({ message: 'Invalid status value' });
         }
 
-        const proposal = await Proposal.findById(req.params.id).populate('project');
+        const proposal = await Proposal.findById(req.params.id)
+            .populate('project')
+            .populate('freelancer');
+
         if (!proposal) return res.status(404).json({ message: 'Proposal not found' });
 
+        // Ensure this proposal belongs to the logged-in client
         if (proposal.client.toString() !== req.userId) {
-            return res.status(403).json({ message: 'You can only update proposals sent to your projects' });
+            return res.status(403).json({ message: 'You can only update proposals for your projects' });
         }
 
         proposal.status = status;
         await proposal.save();
 
-        // 🔹 If accepted → assign freelancer to the project
+        // ✅ If accepted, assign the freelancer to the project
         if (status === 'accepted') {
-            const project = await Project.findById(proposal.project._id);
-            if (project) {
-                project.freelancer = proposal.freelancer; // 👈 assign freelancer
-                project.status = 'in-progress';
-                await project.save();
-            }
+            const updatedProject = await Project.findByIdAndUpdate(
+                proposal.project._id,
+                {
+                    freelancer: proposal.freelancer._id,
+                    status: 'in-progress'
+                },
+                { new: true }
+            );
+
+            console.log('✅ Project updated with freelancer:', updatedProject);
         }
 
-        res.status(200).json({ message: 'Proposal status updated', proposal });
+        res.status(200).json({ message: 'Proposal status updated successfully' });
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Failed to update proposal', error: err.message });
+        console.error('Failed to update proposal:', err);
+        res.status(500).json({ message: 'Error updating proposal', error: err.message });
     }
 });
 
+
 // GET accepted projects (clean list)
 router.get('/my-accepted-projects', verifyToken, async (req, res) => {
-  try {
-    if (req.role !== 'freelancer') return res.status(403).json({ message: 'Only freelancers can view accepted projects' });
+    try {
+        if (req.role !== 'freelancer') return res.status(403).json({ message: 'Only freelancers can view accepted projects' });
 
-    const proposals = await Proposal.find({ freelancer: req.userId, status: 'accepted' })
-      .populate('project', 'projectName projectDescription status dueDate progress client freelancer');
+        const proposals = await Proposal.find({ freelancer: req.userId, status: 'accepted' })
+            .populate('project', 'projectName projectDescription status dueDate progress client freelancer');
 
-    const acceptedProjects = proposals.map(p => p.project);
-    res.status(200).json(acceptedProjects);
-  } catch (err) {
-    console.error('Error fetching accepted projects:', err);
-    res.status(500).json({ message: 'Failed to fetch accepted projects', error: err.message });
-  }
+        const acceptedProjects = proposals.map(p => p.project);
+        res.status(200).json(acceptedProjects);
+    } catch (err) {
+        console.error('Error fetching accepted projects:', err);
+        res.status(500).json({ message: 'Failed to fetch accepted projects', error: err.message });
+    }
 });
 
 // router.get('/dashboard-projects', verifyToken, async (req, res) => {

@@ -44,6 +44,8 @@ function verifyToken(req, res, next) {
     req.role = payload.role;     // "client" or "freelancer"
 
     next();
+    console.log("JWT Payload:", payload);
+
   } catch (err) {
     return res.status(401).json({ message: 'Unauthorized: Invalid or expired token', error: err.message });
   }

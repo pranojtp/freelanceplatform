@@ -37,7 +37,7 @@ const Client_projects = () => {
                     </button>
                 </a>
             </div>
-            <div className="flex flew-row justify-items gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     projects.map((project) => (
                         <Card key={project._id} className="text-center border-0 shadow-md hover:shadow-lg transition-shadow">

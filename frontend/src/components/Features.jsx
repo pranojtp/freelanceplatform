@@ -2,9 +2,9 @@ import {
     FileText,
     Receipt,
     FolderKanban,
-    Video,
-    Calendar,
-    Users
+    // Video,
+    // Calendar,
+    // Users
 } from 'lucide-react';
 import {
     Card,
@@ -31,21 +31,21 @@ const Features = () => {
             title: "Project Tracking",
             description: "Manage tasks, deadlines, and deliverables with Kanban boards"
         },
-        {
-            icon: <Video className="h-8 w-8 text-red-600" />,
-            title: "Video Conferencing",
-            description: "Built-in video calls and meeting scheduling"
-        },
-        {
-            icon: <Calendar className="h-8 w-8 text-orange-600" />,
-            title: "Daily Progress",
-            description: "Log work updates and export progress reports"
-        },
-        {
-            icon: <Users className="h-8 w-8 text-indigo-600" />,
-            title: "Collaboration",
-            description: "Real-time chat and file sharing with clients"
-        }
+        // {
+        //     icon: <Video className="h-8 w-8 text-red-600" />,
+        //     title: "Video Conferencing",
+        //     description: "Built-in video calls and meeting scheduling"
+        // },
+        // {
+        //     icon: <Calendar className="h-8 w-8 text-orange-600" />,
+        //     title: "Daily Progress",
+        //     description: "Log work updates and export progress reports"
+        // },
+        // {
+        //     icon: <Users className="h-8 w-8 text-indigo-600" />,
+        //     title: "Collaboration",
+        //     description: "Real-time chat and file sharing with clients"
+        // }
     ];
     return (
         <>
