@@ -1,5 +1,3 @@
-
-
 import React, { useState } from 'react';
 import axios from 'axios';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -11,7 +9,7 @@ function SignUpForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState('');
   const [captchaToken, setCaptchaToken] = useState(null);
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 

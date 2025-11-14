@@ -43,12 +43,12 @@ export default function Intro() {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button 
                     onClick={() => onNavigate('auth')} 
-                    className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 text-lg font-semibold transform hover:scale-105"
+                    className="px-8 py-4 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg hover:shadow-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 text-m font-semibold transform hover:scale-105"
                   >
                     Start Free Trial
                   </button>
                   <button 
-                    className="px-8 py-4 rounded-xl bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg hover:shadow-xl hover:bg-white/90 transition-all duration-300 text-lg font-semibold border border-gray-200 transform hover:scale-105"
+                    className="px-8 py-4 rounded-xl bg-white/80 backdrop-blur-sm text-gray-800 shadow-lg hover:shadow-xl hover:bg-white/90 transition-all duration-300 text-m font-semibold border border-gray-200 transform hover:scale-105"
                   >
                     Learn more
                   </button>

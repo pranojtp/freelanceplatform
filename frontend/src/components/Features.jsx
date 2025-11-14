@@ -87,7 +87,7 @@ const Features = () => {
                                         {feature.description}
                                     </Typography>
                                 </CardBody>
-                                <CardFooter className="text-l text-gray-600 hover:text-gray-900">
+                                <CardFooter className="text-xs text-gray-600 hover:text-gray-900">
                                     <Button>Readmore</Button>
                                 </CardFooter>
                             </Card>

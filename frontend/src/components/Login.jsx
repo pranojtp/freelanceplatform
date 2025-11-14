@@ -27,8 +27,8 @@ function LoginForm() {
           localStorage.setItem("token", res.data.usertoken);
           localStorage.setItem("role", res.data.role);
 
-          if (res.data.role === "client") navigate('/clientdashboard');
-          else if (res.data.role === "freelancer") navigate('/freelancerdashboard');
+          if (res.data.role === "client") navigate('/clientdashboard/clientprojects');
+          else if (res.data.role === "freelancer") navigate('/freelancerdashboard/clientWork');
           else navigate('/userdashboard');
         }
       })

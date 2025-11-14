@@ -65,9 +65,9 @@ const Workflow = () => {
                                     }}
                                 >
                                     {/* Step Number Circle */}
-                                    <div className="relative z-10 mx-auto w-20 h-20 mb-6">
+                                    <div className="relative z-10 mx-auto w-16 h-16 mb-6">
                                         <div className={`w-full h-full rounded-full bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-110`}>
-                                            <span className="text-white text-xl font-bold">{step.step}</span>
+                                            <span className="text-white text-m font-bold">{step.step}</span>
                                         </div>
 
                                         {/* Connecting Arrow */}
