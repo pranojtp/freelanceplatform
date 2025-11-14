@@ -37,7 +37,7 @@ Node.js	JavaScript runtime environment.
 Express.js	Fast, minimalist web framework for building the REST API.
 MongoDB	Flexible NoSQL database for data persistence.
 Mongoose library for MongoDB.
-
-Website Link :- https://freelancehubsaas.netlify.app/
 JWT	Secure, stateless authentication.
 Razorpay SDK	Handling payment order creation and webhook verification.
+
+Website Link :- https://freelancehubsaas.netlify.app/
